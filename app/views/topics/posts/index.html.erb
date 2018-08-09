@@ -1,0 +1,16 @@
+<div class="container">
+
+  <h1><%= @topic.title %></h1>
+
+  <div class="row">
+    <div class="col-xs-9 pull-left">
+      <ul class="articles">
+        <%= render 'shared/posts' %>
+      </ul>
+    </div>
+  </div>
+
+  <%= paginate @posts %>
+
+  <%= link_to "New Post", new_post_path(topic_id: @topic.id) %>
+</div>

@@ -1,0 +1,51 @@
+<div class="grey2"></div>
+
+<div id="header">
+  <div class="container">
+    <div class="row">
+      <div class="grey"></div>
+      <a class="col-xs-3 logo pull-left" href="<%= root_url %>">
+        <%= image_tag('common/logo.png') %>
+        <%= image_tag('common/logo_small.png', class: 'logo-small') %>
+      </a>
+      <div class="col-xs-9 pull-left">
+        <div class="col-xs-6 pull-left">
+          <span class="icon icon-search"></span>
+          <input type="text" placeholder="Search..."/>
+        </div>
+        <div class="col-xs-3 avatar pull-right">
+          <a href="<%= root_url %>">
+            <div class="mask"></div>
+            <%= image_tag('common/guest_image.png') %>
+          </a>
+
+          <!-- <% if current_user %>
+            <strong>Welcome <%= current_user.full_name %></strong>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          <% else %>
+            <strong>Welcome Guest!</strong>
+            <%= link_to "Login", new_user_session_path %> or
+            <%= link_to "Register", new_user_registration_path %>
+          <% end %> -->
+          <!-- moved the current_user.full_name out of a conditional since the struct ensures that the value won't be nil -->
+          <strong>Welcome <%= current_user.full_name %></strong>
+          <% if current_user.is_a?(OpenStruct) %>
+            <%= link_to "Login", new_user_session_path %> or
+            <%= link_to "Register", new_user_registration_path %>
+          <% else %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          <% end %>
+
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+
+<div id="main-menu" class="small">
+  <div class="container">
+    <div class="row">
+    </div>
+  </div>
+</div>
